@@ -6,7 +6,7 @@
 <body>
 	<?php 
 		include("include/header.php");
-?>
+	?>
 
 	<div style="margin-top: 40px;"></div>
 	<div class="container">
@@ -28,7 +28,7 @@
 				<img src="images/patient.png" style="width: 80%; height: 80%;">
 
 				<h5 class="text-center">We are employing for doctors</h5>
-
+ 
 				<a href="#">
 					<button class="btn btn-success my-3" style="margin-left: 30%;">Apply Now!!!</button>
 				</a>

@@ -1,6 +1,8 @@
 <?php 
 
-include("include/connection.php");
+session_start();
+
+include("include/connection.php"); 
 
 if (isset($_POST['login'])) {
 	
@@ -11,8 +13,9 @@ if (isset($_POST['login'])) {
 
 	if(empty($username)){
 		$error['admin'] = "Enter Username";
-
-	}else if(empty($password)){
+		
+	}
+	else if(empty($password)){
 		$error['admin'] = "Enter Password";	
 	}
 	if(count($error)==0){
@@ -21,27 +24,34 @@ if (isset($_POST['login'])) {
 		$result = mysqli_query($connect,$query);
 
 
-		if(mysqli_num_rows($result) == 1){
+		if(mysqli_num_rows($result) == 1 ) {
 
-			echo "<script>('You have login as an Admin')</script>";	
+			echo "<script>alert('You have login as an Admin')</script>";
 
 			$_SESSION['admin'] = $username;
 
-			//header("Location:")	
-		}else{
-			echo  "<script>('Invalid Username or Password')</script>";
+			header("Location:admin/index.php");
+			exit();
+		}
+
+		else{
+
+			echo "<script>alert('Invalid Username or Password')</script>";
 		}
 	}
 }
 
- ?>
+?>
+
+
 
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Admin Login Page</title>
 </head>
-<body style="background-image: url(images/hospital3.png); background-repeat: no-repeat; background-size: cover;">
+
+<body style="background-image: url(images/hospital.png); background-repeat: no-repeat; background-size: cover;">
 
 	<?php 
 
@@ -57,19 +67,22 @@ if (isset($_POST['login'])) {
 	 			<div class="col-md-3"></div>
 	 			<div class="col-md-6 jumbotron">
 	 				<img src="images/admin7.png" height="300" style="margin-left: 150px;" class="col-md-6" >
-	 				<form method="post" class="my-2">
+	 				<form method="post" class="my-3">
 
-	 					<div style="text-decoration-color: white;" class="alert alert-danger"><font color="text-white"></font>
+	 					<div class="alert alert-danger">
 	 					
 	 					<?php 
 
 	 					if(isset($error['admin'])){
 
-	 						$show = $error['admin'];
+	 						$sh = $error['admin'];
+							 
+							$show = "<h4 class = 'alert alert-danger'>$sh</h4>";   
 
 	 					}else{
 	 						$show = "";
 	 					}
+
 	 					echo $show;
 
 	 					?>
@@ -83,7 +96,7 @@ if (isset($_POST['login'])) {
 	 						<input type="password" name="pass" class="form-control" placeholder="password" >
 	 					</div>
 
-	 					<input style="margin-top: 15px;" c type="submit" name="login" class="btn btn-success" value="Login">
+	 					<input style="margin-top: 20px;" type="submit" name="login" class="btn btn-success" value="Login">
 	 				</form>
 	 			</div>
 	 		</div>
