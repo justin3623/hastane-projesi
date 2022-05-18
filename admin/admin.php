@@ -33,7 +33,7 @@
 
                                 <?php
 
-                                    $ad = $_SESSION['admin'];
+                                    $ad = isset($_SESSION['admin']);
                                     $query = "SELECT * FROM admin WHERE username !='$ad'";
                                     $res = mysqli_query($connect,$query);
                                     
@@ -91,6 +91,7 @@
                                 <?php
 
                                 if(isset($_POST['add'])){
+                                    
                                     $uname = $_POST['uname'];
                                     $pass = $_POST['pass'];
                                     $image = $_FILES['img']['name'];
