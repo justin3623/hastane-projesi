@@ -46,14 +46,16 @@
                         <div class="row">
                             <div class="col-md-6">
                                 
-                                <h3>
+                                <h4>
                                     <?php 
                                         
                                         //$username = isset($row['username']);
-                                        echo $username ; 
+
+                                        // new components 
+                                        echo $username . " " ; 
                                     
                                     ?>PROFILE
-                                </h3>
+                                </h4>
             
                                 <?php
                                     
@@ -79,7 +81,7 @@
                                 <form method="post" enctype="multipart/form-data">
                                     <?php
 
-                                    $profiles = $row['profile'];
+                                    $profiles = isset($row['profile']);;
 
                                     echo "<img src='img/$profiles' class='col-md-12' style='height: 250px;'>";
                                     ?>      
@@ -89,6 +91,7 @@
                                         <label for="">UPDATE PROFILE</label>
                                         <input type="file" name="profile" class="form-control">
                                     </div>
+                                    
                                     <input type="submit" name="update" value="UPDATE" style="margin-top: 10px;">
                                 </form>
                             </div>
