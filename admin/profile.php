@@ -52,6 +52,8 @@
                                         //$username = isset($row['username']);
 
                                         // new components 
+
+                                        // not valid 
                                         echo $username . " " ; 
                                     
                                     ?>PROFILE
